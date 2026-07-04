@@ -8,8 +8,7 @@ The exercises emphasize writing logic manually instead of relying solely on buil
 
 ---
 
-## 📚 Topics Covered
-
+## 📚 Topics\
 * Variables and Data Types
 * Lists, Tuples, Sets, and Dictionaries
 * Conditional Statements
