@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document Scanner</title>
+    <meta name="description" content="Upload a photo of a document, click its 4 corners, and get a perspective-corrected, sharpened scan." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <div class="logo">
+                <span class="logo-icon">📄</span>
+                <span class="logo-text">DocScanner</span>
+            </div>
+            <p class="tagline">Straighten &amp; enhance any document photo</p>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="card" id="section-upload">
+            <div class="step-badge">Step 1</div>
+            <h2>Upload a Document Photo</h2>
+            <p class="hint">Supports JPG, PNG, BMP, TIFF · Max 10 MB</p>
+
+            <label class="drop-zone" id="drop-zone" for="file-input">
+                <span class="drop-icon">☁️</span>
+                <span class="drop-text">Drag &amp; drop an image here<br><small>or click to browse</small></span>
+                <input type="file" id="file-input" accept=".jpg,.jpeg,.png,.bmp,.tiff" hidden />
+            </label>
+
+            <div id="upload-error" class="error-msg" hidden></div>
+            <div id="upload-loader" class="loader" hidden>Uploading…</div>
+        </section>
+
+        <section class="card" id="section-corners" hidden>
+            <div class="step-badge">Step 2</div>
+            <h2>Click the 4 Corners of the Document</h2>
+            <div class="canvas-wrapper">
+                <canvas id="canvas"></canvas>
+            </div>
+
+            <div class="btn-row">
+                <button class="btn btn-secondary" id="btn-reset-corners">↩ Reset Corners</button>
+                <button class="btn btn-primary" id="btn-process" disabled>✨ Process Document</button>
+            </div>
+
+            <div id="process-error" class="error-msg" hidden></div>
+            <div id="process-loader" class="loader" hidden>Processing…</div>
+        </section>
+
+        <section class="card" id="section-results" hidden>
+            <div class="step-badge">Step 3</div>
+            <h2>Your Results</h2>
+            <p class="hint">Click any image to download it</p>
+
+            <div class="results-grid">
+
+                <div class="result-card">
+                    <div class="result-label">📐 Perspective Corrected</div>
+                    <img id="img-perspective" src="" alt="Perspective corrected document" />
+                    <a id="dl-perspective" class="btn btn-download" download="perspective.png">⬇ Download</a>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-label">🔪 Sharpened</div>
+                    <img id="img-sharpened" src="" alt="Sharpened document" />
+                    <a id="dl-sharpened" class="btn btn-download" download="sharpened.png">⬇ Download</a>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-label">☀️ High Contrast</div>
+                    <img id="img-contrast" src="" alt="High contrast document" />
+                    <a id="dl-contrast" class="btn btn-download" download="high_contrast.png">⬇ Download</a>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-label">🌈 Colour Enhanced</div>
+                    <img id="img-color" src="" alt="Colour enhanced document" />
+                    <a id="dl-color" class="btn btn-download" download="color_enhanced.png">⬇ Download</a>
+                </div>
+
+            </div>
+
+            <div class="btn-row center">
+                <button class="btn btn-secondary" id="btn-scan-another">📸 Scan Another Document</button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Built with Flask &amp; OpenCV · <a href="https://github.com/" target="_blank">View on GitHub</a></p>
+    </footer>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
